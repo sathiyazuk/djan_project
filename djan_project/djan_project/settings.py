@@ -9,9 +9,14 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
-from pathlib import Path
 import os
+from pathlib import Path
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+SECRET_KEY = env('SECRET_KEY')
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,12 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'my_app',
-   
-  
-    
-    
-    
-   
+
+
+
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -62,9 +67,9 @@ ROOT_URLCONF = 'djan_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        #CRUD
-        'DIRS': [os.path.join(BASE_DIR,"templates")],
-        #Admin_panel
+        # CRUD
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
+        # Admin_panel
         # 'DIRS': [os.path.join(BASE_DIR,"templates\\admin_panel")],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -129,12 +134,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    
+
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4' 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL='home'
+LOGIN_REDIRECT_URL = 'home'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
